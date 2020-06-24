@@ -23,6 +23,8 @@ export default class RectangleRender extends Component {
     })
   }
 
+
+  //generate rectangle with a width base on the size of the div they are and the height base on the number of element
   renderRectangles(){
     this.arrayOfRectangles =[];
     for (let index = 1; index <= this.props.numbRectangles; index++) {
@@ -32,23 +34,25 @@ export default class RectangleRender extends Component {
     }
   }
 
-  shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-  
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-  
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-  
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-  
-    return array;
+  //Bubble sort out algorithme which take a shuffle array an return one sort
+  bubbleSortAlgorithme(array){
+      let i , j, temp ;
+
+      for (i = 0; i < array.length; i++) {
+
+         for ( j = 0;  j < array.length-i-1; j++) {
+
+             if(array[j] > array[j+1]){
+                temp = array[j+1];
+                array[j+1] = array[j];
+                array[j] = temp;
+             }
+             
+         }
+          
+      }
+
+      return array;
   }
 
   // function to generate a shuffle array of rectangles
@@ -66,6 +70,7 @@ export default class RectangleRender extends Component {
   render() {
     // I get the width of my main div which content my rectangles
     this.renderRectangles();
+
     
     // base on the amount of rectangle I want I try to get the width of each rectangles
     let widthEachRectangle = Math.floor(20);
