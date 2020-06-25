@@ -3,6 +3,9 @@ import RectangleScheme from './components/RectangleScheme';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-input-range/lib/css/index.css';
 import InputRange from 'react-input-range';
+import ButtonStart from './components/panelConfig/ButtonStart';
+import PannelConfigContainer from './components/panelConfig/PannelConfigContainer';
+
 
 export default class Main extends Component {
   
@@ -12,6 +15,10 @@ export default class Main extends Component {
         value:5,
     };
 
+    // array which store our label for pannel config
+    this.labelConfig = ['Bubble Score', 'Quick Score', 'Insertion Score', 'Selection Score',];
+
+    // array to sort which is generate at the rendering of our page 
     this.arrayToSort = [];
   }
 
@@ -61,7 +68,7 @@ export default class Main extends Component {
     this.arrayToSort = this.generateArrayToSort(50);
 
     return (
-        <div className="container-flex  ml-md-5 mr-md-5 row"> 
+        <div className="container-flex  ml-md-2 mr-md-2 row"> 
             <div className="col-md-12 mt-md-1">
                 <h1>Common Sort Algorithms</h1>
             </div>
@@ -89,9 +96,30 @@ export default class Main extends Component {
                     <RectangleScheme numbRectangle={this.state.value} arraySort = {this.arrayToSort}/>
                 </div>
             </div>
-            <div className="col-md-2 bg-info">
-            fdsfdsf
-            </div> 
+            
+                <div className="col-md-2 row">
+                    <div>
+                        <div className = "col-md-12 ">
+                            <PannelConfigContainer titleconfig ="Score"/>
+                        </div>
+                        <div className = "col-md-12 ">
+                            <PannelConfigContainer titleconfig ="Score"/>
+                        </div>
+                    </div>
+                    <div>
+                        <div className = "col-md-12 ">
+                            <PannelConfigContainer titleconfig ="Score"/>
+                        </div>
+                        <div className = "col-md-12 ">
+                            <PannelConfigContainer titleconfig ="Score"/>
+                        </div>
+                        <div className = "col-md-12 ">
+                            <ButtonStart />
+                        </div>
+                    </div>
+                    
+                </div> 
+            
       </div>
     );
   }
